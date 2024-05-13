@@ -2,8 +2,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class PhoneBook {
- static Scanner input = new Scanner(System.in);
- static Scanner scanner = new Scanner(System.in);
+ private  static Scanner input = new Scanner(System.in);
+ private static Scanner scanner = new Scanner(System.in);
  static ArrayList<String> nameList = new ArrayList<>(); 
  static ArrayList<String> numberList = new ArrayList<>();
 public static void main(String... args) {
@@ -32,12 +32,11 @@ public static void afeezMenu() {
 	switch(navigate) {
 	case 1 -> addContacts();
 	//case 2 -> removeContact();
-	//case 3 -> findByNumber();
+	case 3 -> findByNumber();
 	//case 4 -> findByFirstName();
 	//case 5 -> findByLastName();
 	//case 6 -> editContact();
-	case 0 -> afeezMenu();break;
-	
+	case 0 -> afeezMenu();
 	default -> afeezMenu();
 
 	}
@@ -54,13 +53,14 @@ public static void addContacts() {
 	
 	System.out.println("Enter New Contact Name");
 	String contactName = input.nextLine();
-	nameList.add(contactName);
-
+	
 	System.out.println("Enter New Contact Telephone");
 	String contactNumber = input.nextLine();
 
 	if(contactNumber.length() == 11 && contactNumber.charAt(0) == '0'){
 	numberList.add(contactNumber);
+	nameList.add(contactName);
+
 	System.out.println("Contact created successfully");
 	anotherContacts();
 
@@ -93,7 +93,7 @@ public static void anotherContacts() {
 		
 	} 
 }
-/**
+
 //public static void removeContact() {
 	
 	//System.out.println("Enter 
@@ -104,17 +104,16 @@ public static void anotherContacts() {
 public static void findByNumber() {
 
 	System.out.println("Enter Phone Number");
-	String numberIncontact = scanner.nextLine();
+	String numberIncontact = input.nextLine();
 	
-	for(int count = 0;count < numberList.length;count++) {
-		if(numberIncontact 
-**/
+	for(int count = 0;count < numberList.size();count++) {
+		if(numberIncontact ==  numberList.get(count)){
+			System.out.println(numberList.remove(count));
+		}
+	}
+	afeezMenu();
+}
 //class	
-
-
-
-
-
 
 }
 
