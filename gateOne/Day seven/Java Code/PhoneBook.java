@@ -2,8 +2,10 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class PhoneBook {
+ static Scanner input = new Scanner(System.in);
  static Scanner scanner = new Scanner(System.in);
- static ArrayList<String> nameAndNumberList = new ArrayList<>(); 
+ static ArrayList<String> nameList = new ArrayList<>(); 
+ static ArrayList<String> numberList = new ArrayList<>();
 public static void main(String... args) {
 
 		afeezMenu();
@@ -34,12 +36,12 @@ public static void afeezMenu() {
 	//case 4 -> findByFirstName();
 	//case 5 -> findByLastName();
 	//case 6 -> editContact();
-	case 0 -> afeezMenu();
+	case 0 -> afeezMenu();break;
+	
+	default -> afeezMenu();
+
 	}
 		
-	addContacts();
-	
-
 }
 
 public static void addContacts() {
@@ -49,21 +51,20 @@ public static void addContacts() {
 	::  ADD CONTACTS   ::
 	:::::::::::::::::::::
 			""");
-	scanner.nextLine();
+	
 	System.out.println("Enter New Contact Name");
-	String contactName = scanner.nextLine();
-	//scanner.next();
-	nameAndNumberList.add(contactName);
+	String contactName = input.nextLine();
+	nameList.add(contactName);
 
 	System.out.println("Enter New Contact Telephone");
-	String contactNumber = scanner.next();
+	String contactNumber = input.nextLine();
 
 	if(contactNumber.length() == 11 && contactNumber.charAt(0) == '0'){
-	nameAndNumberList.add(contactNumber);
+	numberList.add(contactNumber);
 	System.out.println("Contact created successfully");
 	anotherContacts();
 
-	System.out.println(nameAndNumberList);
+	
 	} 
 	else {
 		System.out.println("Incorrect Number");
@@ -73,10 +74,9 @@ public static void addContacts() {
 }
 public static void anotherContacts() {
 	
-	Scanner scanner = new Scanner(System.in);
 
 	System.out.println("Add Another Contact? (Yes/No)");
-	String addContactAgain = scanner.nextLine();
+	String addContactAgain = input.nextLine();
 	if(addContactAgain.equalsIgnoreCase("Yes")){
 		addContacts();}
 
@@ -84,6 +84,8 @@ public static void anotherContacts() {
 		System.out.println("""
 			Contact Added Successfully
 			""");
+		System.out.println(nameList);
+		System.out.println(numberList);
 		afeezMenu();}
 	else {
 		System.out.println("Invalid response");
@@ -91,6 +93,28 @@ public static void anotherContacts() {
 		
 	} 
 }
+/**
+//public static void removeContact() {
+	
+	//System.out.println("Enter 
+	//for(int count = 0;count < nameList.length;count++) {
+		
 
+//}
+public static void findByNumber() {
+
+	System.out.println("Enter Phone Number");
+	String numberIncontact = scanner.nextLine();
+	
+	for(int count = 0;count < numberList.length;count++) {
+		if(numberIncontact 
+**/
 //class	
+
+
+
+
+
+
 }
+
