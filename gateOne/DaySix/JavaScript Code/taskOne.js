@@ -1,8 +1,11 @@
-import java.time.LocalDate;
-function dateOfBirthToAge(userInput) {
-	
+const prompt = require('prompt-sync')();
+let userDate = prompt("Enter Date of Birth");
+	dateOfBirthToAge(userDate);
+         
 
-	LocalDate date = LocalDate.now();
+function dateOfBirthToAge(userInput) {
+
+	const date = new Date();
 
 	let output = 0;  
 	let userYear = 0;
@@ -11,10 +14,12 @@ function dateOfBirthToAge(userInput) {
 	let userMonth = 0;
 
 	if(userInput.length() != 10){console.log("Incomplete Date Inputed.Date Format = DD/MM/YYY");}
-
+	
 	else {
  
 		userInput = userInput.replace("/","");
+		
+		if(userInput >){console.log("Incomplete Date Inputed.Date Format = DD/MM/YYY");}
 
 		for(let count =userInput.length() - 4;count < userInput.length();count++) {  
 
@@ -36,8 +41,4 @@ function dateOfBirthToAge(userInput) {
 
 }
 
- 	const prompt = require("prompt-sync")();
-	let userDate = parseInt(prompt("Enter Date of Birth"));
-		dateOfBirthToAge(userDate);
-         
-
+ 
