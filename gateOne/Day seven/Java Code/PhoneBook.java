@@ -105,10 +105,12 @@ public static void findByNumber() {
 
 	System.out.println("Enter Phone Number");
 	String numberIncontact = input.nextLine();
-	
-	for(int count = 0;count < numberList.size();count++) {
-		if(numberIncontact ==  numberList.get(count)){
-			System.out.println(numberList.remove(count));
+	int count = 0;
+
+	for(String num : numberList) {
+	num = numberList.get(count);
+		if(num == numberIncontact){
+			System.out.print(num);
 		}
 	}
 	afeezMenu();
