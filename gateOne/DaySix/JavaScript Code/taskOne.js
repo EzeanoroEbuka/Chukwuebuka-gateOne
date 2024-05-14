@@ -1,10 +1,5 @@
-const prompt = require('prompt-sync')();
-let userDate = prompt("Enter Date of Birth");
-	dateOfBirthToAge(userDate);
-         
-
-function dateOfBirthToAge(userInput) {
-
+  function dateOfBirthToAge(userInput) {
+	
 	const date = new Date();
 
 	let output = 0;  
@@ -14,12 +9,10 @@ function dateOfBirthToAge(userInput) {
 	let userMonth = 0;
 
 	if(userInput.length() != 10){console.log("Incomplete Date Inputed.Date Format = DD/MM/YYY");}
-	
+
 	else {
  
 		userInput = userInput.replace("/","");
-		
-		if(userInput >){console.log("Incomplete Date Inputed.Date Format = DD/MM/YYY");}
 
 		for(let count =userInput.length() - 4;count < userInput.length();count++) {  
 
@@ -37,8 +30,12 @@ function dateOfBirthToAge(userInput) {
 		
 						
 		}
-	return outPut;
+	return output;
 
 }
 
- 
+ 	const prompt = require("prompt-sync")();
+	let userDate = parseInt(prompt("Enter Date of Birth"));
+		dateOfBirthToAge(userDate);
+         
+

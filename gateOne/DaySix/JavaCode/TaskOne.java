@@ -17,6 +17,7 @@ public class TaskOne {
 	else {
  
 		input = input.replace("/","");
+		if(input < '0' || input > '9'){System.out.println("wrong Date Inputed.Date Format = DD/MM/YYY");}
 
 		for(int count = input.length() - 4;count < input.length();count++) {  
 
@@ -34,8 +35,15 @@ public class TaskOne {
 		
 						
 		}
-	return outPut;
+	System.out.println(output);
 
 }
 
+ public static void main(String[] args) { 
+
+	Scanner input = new Scanner (System.in);
+	System.out.println("Enter date");
+	String dateInput = input.next();
+	dateOfBirthToAge(dateInput);
+}
 }

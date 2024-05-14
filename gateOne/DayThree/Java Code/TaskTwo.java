@@ -4,6 +4,8 @@ public class TaskTwo {
  public static void main(String[] args) { 
 
 	Random rand = new Random();
+	Random operatorChoice = new Random();
+
 	Scanner scanner = new Scanner(System.in);
 	
 	int highestRange = 100;
@@ -14,43 +16,33 @@ public class TaskTwo {
 
 	int firstNumber = 0;
 	int secondNumber = 0;
-
+	
 	for(int count = 1;count <= 10;count++) {
-	firstNumber = rand.nextInt(lowestRange,highestRange);
-	secondNumber = rand.nextInt(lowestRange,highestRange);
-	
-	int result = (secondNumber) * (firstNumber);
+		firstNumber = rand.nextInt(lowestRange,highestRange);
+		secondNumber = rand.nextInt(lowestRange,highestRange);
+				
+				
+		int result = (secondNumber) * (firstNumber);
 
-	System.out.print(secondNumber + "\tx\t" + firstNumber + "\t= ");
-	int userAnwer = scanner.nextInt();
+		System.out.print(secondNumber + "\tX\t" + firstNumber + "\t= ");
+		int userAnwer = scanner.nextInt();
 
-	if(userAnwer == result){correctAnswer++;}
+		System.out.println();
+		if(userAnwer == result){System.out.printf("The Answer: %d is Correct%n",result);correctAnswer++;}
 		
-	else{
-		WrongAnswer++;
-	   }
-	System.out.println("Correct Answer is: " + correctAnswer);	
-	System.out.println("Wrong Answer is: " + WrongAnswer);	
-	
+		else{
+			System.out.println();
+			System.out.printf("The Answer: %d is  Wrong %n",userAnwer);WrongAnswer++;
+			System.out.printf("The Correct Answer is: %d",result);
+			System.out.println();
+		  }
+
 	}
-/**
-	//for(int count = 1;count <= 10;count++) {
-
-	int result = (inputTwo) + (input);
-
-	System.out.print(inputTwo + "\t+\t" + input + "\t= ");
-	int userAnwer = scanner.nextInt();
-
-	if(userAnwer == result){correctAnswer++;}
-		
-	else{
-		WrongAnswer++;
-	 }
-	System.out.println("Wrong Answer is: " + WrongAnswer);
-	System.out.println("Correct Answer is: " + correctAnswer);	
-	//}
-
-	**/
+	System.out.println();
+	System.out.println("Total Correct Answer is: " + correctAnswer);	
+	System.out.println("Total Wrong Answer is: " + WrongAnswer);	
+	
+	
 
 }
 

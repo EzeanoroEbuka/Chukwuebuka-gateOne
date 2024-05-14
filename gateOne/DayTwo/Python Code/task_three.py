@@ -1,4 +1,4 @@
-list = [10]
+list = []
 
 for score in range(0,10,):
 	score_inputed = int(input("Enter Scores"))

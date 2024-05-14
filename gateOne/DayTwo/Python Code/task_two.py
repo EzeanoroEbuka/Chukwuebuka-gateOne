@@ -1,7 +1,8 @@
-list = [10]
+list = []
 
 for score in range(0,10,):
 	score_inputed = int(input("Enter Scores"))
 	list.append(score_inputed)
 
-print(list)
+for score in range(0,10):
+	print(list[score])
