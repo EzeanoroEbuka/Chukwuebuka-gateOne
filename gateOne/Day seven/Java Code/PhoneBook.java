@@ -37,7 +37,7 @@ public static void afeezMenu() {
 	case 3 -> findByNumber();
 	case 4 -> findByFirstName();
 	case 5 -> findByLastName();
-	//case 6 -> editContact();
+	case 6 -> editContact();
 	case 0 -> afeezMenu();
 	default -> afeezMenu();
 
@@ -62,21 +62,15 @@ public static void addContacts() {
 	System.out.println("Enter New Contact Telephone");
 	String contactNumber = input.nextLine();
 
-	if(contactNumber.length() == 11 && contactNumber.charAt(0) == '0'){
+	
 	numberList.add(contactNumber);
 	nameList.add(contactName);
 	lastNameList.add(contactLastName);
 
 	System.out.println("Contact created successfully");
 	anotherContacts();
-
-	 
-	} 
-	else {
-		System.out.println("Incorrect Number");
-		
-		addContacts();
-	    }
+	
+	    
 }
 public static void anotherContacts() {
 	
@@ -90,17 +84,13 @@ public static void anotherContacts() {
 		System.out.println("""
 			Contact Added Successfully
 			""");
-		System.out.println(nameList);
-		System.out.println(numberList);
-		System.out.println(lastNameList);
 		afeezMenu();}
 	else {
 		System.out.println("Invalid response");
 		anotherContacts();
 		
-	} 
+	    } 
 }
-
 public static void removeContact() {
 	
 	Scanner input = new Scanner(System.in);
@@ -110,13 +100,11 @@ public static void removeContact() {
 
 	for(int count = 0;count < numberList.size();count++) {
 		delete = numberList.get(count);
+
 		if(delete.equals(removeContact)){
 			numberList.remove(count);
 			nameList.remove(count);
 			lastNameList.remove(count);
-			System.out.println(nameList);
-			System.out.println(numberList);
-			System.out.println(lastNameList);
 			System.out.println("Contact removed Successfully");
 			afeezMenu();
 		}
@@ -140,16 +128,15 @@ public static void findByNumber() {
 		otherName = lastNameList.get(count);
 
 		if(number.equals(numberIncontact)){
-			System.out.println(otherName);
-			System.out.println(name);
-			System.out.println(number);}
-		else{
-			System.out.println("Contact Not Found");}
+			System.out.printf("%s  %s  %n%s%n",name,otherName,number);
+			afeezMenu();
+		}
 	}
+	if(!(number.equals(numberIncontact))){
+		System.out.println("Contact Not Found");afeezMenu();}
+	
 	System.out.println();
-	afeezMenu();
 }
-
 public static void findByFirstName() {
 
 	System.out.println("Enter First Name Of Contact");
@@ -163,15 +150,15 @@ public static void findByFirstName() {
 		number = numberList.get(count);
 		name = nameList.get(count);
 		otherName = lastNameList.get(count);
-		if(name.equals(firstNameIncontact)){
-			System.out.println(otherName);
-			System.out.println(name);
-			System.out.println(number);}
-		else{
-			System.out.println("Contact Not Found");}
+
+		if(name.equalsIgnoreCase(firstNameIncontact)){
+			System.out.printf("%s  %s  %n%s%n",name,otherName,number);afeezMenu();
+		}
 	}
+	if(!(name.equals(firstNameIncontact))){
+		System.out.println("Contact Not Found");afeezMenu();}
+
 	System.out.println();
-	afeezMenu();
 }
 public static void findByLastName() {
 
@@ -186,45 +173,39 @@ public static void findByLastName() {
 		number = numberList.get(count);
 		name = nameList.get(count);
 		otherName = lastNameList.get(count);
-		if(otherName.equals(lastNameIncontact)){
-			System.out.println(otherName);
-			System.out.println(name);
-			System.out.println(number);}
 
-		if(!(otherName.equals(lastNameIncontact))){
-			System.out.println("Contact Not Found");}
+		if(otherName.equalsIgnoreCase(lastNameIncontact)){
+			System.out.printf("%s  %s  %n%s%n",name,otherName,number);
+			afeezMenu();
+		}
 	}
+	if(!(otherName.equals(lastNameIncontact))){
+		System.out.println("Contact Not Found");afeezMenu();}
+	
 	System.out.println();
-	afeezMenu();
 }
-/**
 public static void editContact() {
 
-	System.out.println("Enter Last Name Of Contact");
-	String lastNameIncontact = input.nextLine();
-
-	String number = "";
-	String name = "";
-	String otherName = "";
-
-	for(int count = 0;count < lastNameList.size();count++) {
-		number = numberList.get(count);
-		name = nameList.get(count);
-		otherName = lastNameList.get(count);
-		if(otherName.equals(lastNameIncontact)){
-			System.out.println(otherName);
-			System.out.println(name);
-			System.out.println(number);}
-
-		if(!(otherName.equals(lastNameIncontact))){
-			System.out.println("Contact Not Found");}
+	System.out.println("""
+			******************
+			** ALL CONTACTS **
+			******************
+	================================================================================
+	""");
+	
+	System.out.println("NAMES\t\t\t\t\tNUMBERS");
+	System.out.println("================================================================================");
+	for(int count = 0;count < numberList.size();count++) {
+				
+		System.out.printf("%s\t%s\t\t\t|\t%s%n",nameList.get(count),lastNameList.get(count),numberList.get(count));
 	}
+	System.out.println("================================================================================");
 	System.out.println();
 	afeezMenu();
 }
 
-**/
-//class	
+
+
 
 }
 
