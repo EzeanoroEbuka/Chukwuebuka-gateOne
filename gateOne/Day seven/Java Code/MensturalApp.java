@@ -1,13 +1,13 @@
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
 
 public class MensturalApp {
  public static void main(String... args) {
 
   	Scanner input = new Scanner(System.in);
 
- 	LocalDate date = LocalDate.now();
-
+ 	
 	int output = 0;  
 	int userYear = 0;
 	int currentYear = 0;
@@ -20,16 +20,14 @@ public class MensturalApp {
 	System.out.println("Enter date when last period stop");
 	String dateStopPeriod = input.nextLine();
 
-	date = date.replace("/","");
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-DD");
+	
+	LocalDate date = LocalDate.parse(dateStopPeriod);
 
-	for(int count = date.length();count <= 0;count--) {  
+	//String newDate = formatter(date);
+ 	System.out.println(date);
 
-	 		int convertedInput = (input.charAt(count)) - '0';
-			userYear = (userYear * 10) + convertedInput;
-	}
-	System.out.println(date);
-
-	System.out.println(userYear  );
+	System.out.println(userYear);
 
 
 

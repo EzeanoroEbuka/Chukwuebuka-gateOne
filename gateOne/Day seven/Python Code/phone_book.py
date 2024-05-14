@@ -1,20 +1,12 @@
-  `import java.util.Scanner;
-import java.util.ArrayList;
+nameList = []
+lastNameList = []
+numberList = []
 
-public class PhoneBook {
- private  static Scanner input = new Scanner(System.in);
- private static Scanner scanner = new Scanner(System.in);
- static ArrayList<String> nameList = new ArrayList<>(); 
- static ArrayList<String> lastNameList = new ArrayList<>(); 
- static ArrayList<String> numberList = new ArrayList<>();
+afeezMenu()
 
-public static void main(String... args) {
-
-		afeezMenu();
-}
-public static void afeezMenu() {
+def afeez_menu():
 		 	
-	System.out.println("""
+	print("""
 	:::::::::::::::::::::::
 	::  AFEEZ CONTACTS   ::
 	:::::::::::::::::::::::
@@ -29,7 +21,8 @@ public static void afeezMenu() {
 	5. Find Contact by Last Name
 	6. Edit Contact
 	0. Back
-			""");
+			""")
+/##
 	int navigate = scanner.nextInt();
 	switch(navigate) {
 	case 1 -> addContacts();
@@ -202,10 +195,5 @@ public static void editContact() {
 	System.out.println("================================================================================");
 	System.out.println();
 	afeezMenu();
-}
-
-
-
-
-}
+##/
 

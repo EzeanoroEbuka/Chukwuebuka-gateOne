@@ -34,7 +34,7 @@ public class TaskOne {
 		if(userMonth < currentMonth) {output = output - 1;}
 		
 						
-		}
+	}
 	System.out.println(output);
 
 }
