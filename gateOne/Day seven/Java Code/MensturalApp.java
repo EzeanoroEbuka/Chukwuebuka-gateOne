@@ -1,40 +1,32 @@
-import java.time.LocalDate;
 import java.util.Scanner;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
+public class MenstraApp {
+ public static void main(String[] args) {
 
-public class MensturalApp {
- public static void main(String... args) {
-
-  	Scanner input = new Scanner(System.in);
-
- 	
-	int output = 0;  
-	int userYear = 0;
-	int currentYear = 0;
-	int currentMonth = 0;
-	int userMonth = 0;
-
-	System.out.println("Enter date when last period began");
-	String dateBeganPeriod = input.nextLine();
-
-	System.out.println("Enter date when last period stop");
-	String dateStopPeriod = input.nextLine();
-
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-DD");
+	Scanner input = new scanner(system.in)
 	
-	LocalDate date = LocalDate.parse(dateStopPeriod);
+	System.out.println("Enter date of the beginning of your last period");
+	String periodBegan = input.nextLine();
 
-	//String newDate = formatter(date);
- 	System.out.println(date);
+	System.out.println("Enter date of the end of the last period");
+	String periodEnd  = input.nextLine();
 
-	System.out.println(userYear);
+	System.out.println("How long does your menstration last");
+	int mensCycle  = input.nextInt();
 
+	String safePeriod = "";
 
-
-
-
+ 	String nextFlow = "";
 	
- }
+	String ovulation = "";
+	
+	System.out.println(date);
+/**
 
+safe period  maximum 7 days ,minimum 5 days
+ 
+next flow = 2- 7 days
 
-}
+ovulation  =  mid of  menstral cycle  
+
+**/
