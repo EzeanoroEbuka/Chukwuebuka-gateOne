@@ -1,15 +1,54 @@
-nameList = []
-lastNameList = []
-numberList = []
+name_list = []
+last_name_list = []
+number_list = []
 
-afeezMenu()
+def another_contacts():
+
+	add_contact_again = input("Add Another Contact? (Yes/No)\n");
+	
+	if(add_contact_again.upper() == ("YES")):
+		add_contacts()
+
+	if(add_contact_again.upper() == ("NO")):
+		print("Contact Added Successfully")
+		afeez_menu()
+	else:
+		print("Invalid response")
+		another_contacts()
+		
+
+def add_contacts():
+
+	print("""
+	:::::::::::::::::::::
+	::  ADD CONTACTS   ::
+	:::::::::::::::::::::
+	       """);
+	
+	contact_name = input("Enter New Contact First Name \n")
+		
+	contact_last_name = input("Enter New Contact Last Name\n")
+	
+	
+	contact_number = input("Enter New Contact Telephone\n")
+	
+
+	
+	number_list.append(contact_number)
+	name_list.append(contact_name)
+	last_name_list.append(contact_last_name)
+
+	print("Contact created successfully")
+	another_contacts();
+	
+
 
 def afeez_menu():
 		 	
-	print("""
-	:::::::::::::::::::::::
-	::  AFEEZ CONTACTS   ::
-	:::::::::::::::::::::::
+	print('''
+		:::::::::::::::::::::::
+		::  AFEEZ CONTACTS   ::
+		:::::::::::::::::::::::
 	
 	Welcome Afeez.....
 	Select from option (1 - 6)
@@ -21,179 +60,18 @@ def afeez_menu():
 	5. Find Contact by Last Name
 	6. Edit Contact
 	0. Back
-			""")
-/##
-	int navigate = scanner.nextInt();
-	switch(navigate) {
-	case 1 -> addContacts();
-	case 2 -> removeContact();
-	case 3 -> findByNumber();
-	case 4 -> findByFirstName();
-	case 5 -> findByLastName();
-	case 6 -> editContact();
-	case 0 -> afeezMenu();
-	default -> afeezMenu();
+	       ''')
 
-	}
-		
-}
+	navigate = int(input("Navigate: "))
+	match navigate:
+		case 1 : add_contacts()
+		case 2 : remove_contact()
+		case 3 : find_by_number()
+		case 4 : find_by_first_name()
+		case 5 : find_by_last_name()
+		case 6 : edit_contact()
+		case 0 : afeez_menu()
+		case _ :  afeez_menu()
 
-public static void addContacts() {
-
-	System.out.println("""
-	:::::::::::::::::::::
-	::  ADD CONTACTS   ::
-	:::::::::::::::::::::
-			""");
-	
-	System.out.println("Enter New Contact First Name");
-	String contactName = input.nextLine();
-
-	System.out.println("Enter New Contact Last Name");
-	String contactLastName = input.nextLine();
-	
-	System.out.println("Enter New Contact Telephone");
-	String contactNumber = input.nextLine();
-
-	
-	numberList.add(contactNumber);
-	nameList.add(contactName);
-	lastNameList.add(contactLastName);
-
-	System.out.println("Contact created successfully");
-	anotherContacts();
-	
-	    
-}
-public static void anotherContacts() {
-	
-
-	System.out.println("Add Another Contact? (Yes/No)");
-	String addContactAgain = input.nextLine();
-	if(addContactAgain.equalsIgnoreCase("Yes")){
-		addContacts();}
-
-	if(addContactAgain.equalsIgnoreCase("No")){
-		System.out.println("""
-			Contact Added Successfully
-			""");
-		afeezMenu();}
-	else {
-		System.out.println("Invalid response");
-		anotherContacts();
-		
-	    } 
-}
-public static void removeContact() {
-	
-	Scanner input = new Scanner(System.in);
-	System.out.println("Enter Contact Number To Be Removed"); 
-	String removeContact = input.nextLine();
-	String delete = "";
-
-	for(int count = 0;count < numberList.size();count++) {
-		delete = numberList.get(count);
-
-		if(delete.equals(removeContact)){
-			numberList.remove(count);
-			nameList.remove(count);
-			lastNameList.remove(count);
-			System.out.println("Contact removed Successfully");
-			afeezMenu();
-		}
-	}
-		if(!(delete.equals(removeContact))){
-			System.out.println("Number not Found");
-			afeezMenu();}
-}
-public static void findByNumber() {
-
-	System.out.println("Enter Phone Number");
-	String numberIncontact = input.nextLine();
-
-	String number = "";
-	String name = "";
-	String otherName = "";
-
-	for(int count = 0;count < numberList.size();count++) {
-		number = numberList.get(count);
-		name = nameList.get(count);
-		otherName = lastNameList.get(count);
-
-		if(number.equals(numberIncontact)){
-			System.out.printf("%s  %s  %n%s%n",name,otherName,number);
-			afeezMenu();
-		}
-	}
-	if(!(number.equals(numberIncontact))){
-		System.out.println("Contact Not Found");afeezMenu();}
-	
-	System.out.println();
-}
-public static void findByFirstName() {
-
-	System.out.println("Enter First Name Of Contact");
-	String firstNameIncontact = input.nextLine();
-
-	String number = "";
-	String name = "";
-	String otherName = "";
-
-	for(int count = 0;count < nameList.size();count++) {
-		number = numberList.get(count);
-		name = nameList.get(count);
-		otherName = lastNameList.get(count);
-
-		if(name.equalsIgnoreCase(firstNameIncontact)){
-			System.out.printf("%s  %s  %n%s%n",name,otherName,number);afeezMenu();
-		}
-	}
-	if(!(name.equals(firstNameIncontact))){
-		System.out.println("Contact Not Found");afeezMenu();}
-
-	System.out.println();
-}
-public static void findByLastName() {
-
-	System.out.println("Enter Last Name Of Contact");
-	String lastNameIncontact = input.nextLine();
-
-	String number = "";
-	String name = "";
-	String otherName = "";
-
-	for(int count = 0;count < lastNameList.size();count++) {
-		number = numberList.get(count);
-		name = nameList.get(count);
-		otherName = lastNameList.get(count);
-
-		if(otherName.equalsIgnoreCase(lastNameIncontact)){
-			System.out.printf("%s  %s  %n%s%n",name,otherName,number);
-			afeezMenu();
-		}
-	}
-	if(!(otherName.equals(lastNameIncontact))){
-		System.out.println("Contact Not Found");afeezMenu();}
-	
-	System.out.println();
-}
-public static void editContact() {
-
-	System.out.println("""
-			******************
-			** ALL CONTACTS **
-			******************
-	================================================================================
-	""");
-	
-	System.out.println("NAMES\t\t\t\t\tNUMBERS");
-	System.out.println("================================================================================");
-	for(int count = 0;count < numberList.size();count++) {
-				
-		System.out.printf("%s\t%s\t\t\t|\t%s%n",nameList.get(count),lastNameList.get(count),numberList.get(count));
-	}
-	System.out.println("================================================================================");
-	System.out.println();
-	afeezMenu();
-##/
+afeez_menu()
 
