@@ -1,6 +1,4 @@
-  `import java.util.Scanner;
-import java.util.ArrayList;
-
+import java.util.Scanner;
 public class PhoneBook {
  private  static Scanner input = new Scanner(System.in);
  private static Scanner scanner = new Scanner(System.in);

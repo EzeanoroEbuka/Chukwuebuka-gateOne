@@ -2,6 +2,29 @@ name_list = []
 last_name_list = []
 number_list = []
 
+def edit_contact():
+
+	print("""
+			******************
+			** ALL CONTACTS **
+			******************
+================================================================================
+	""")
+	
+	print("NAMES\t\t\t\t\tNUMBERS")
+	print("================================================================================")
+	for count in range(0,len(number_list),1):		
+		print(f"{name_list[count]}\t{last_name_list[count]}  |\t\t\t\t{number_list[count]}\n")
+	
+	print("================================================================================")
+	print("\n")
+
+	navigate = int(input("press '0' to return to Menu: "))
+	if navigate == 0:
+		afeez_menu()
+	else:
+		edit_contact()
+	
 def find_by_last_name():
 
 	contact_last_name = input("Enter Contact Last Name\n");
@@ -12,17 +35,21 @@ def find_by_last_name():
 	for count in range(0,len(last_name_list),1):
 		number = number_list[count]
 		name = name_list[count]
-		other_name = last_name_list[count]
+		last_name = last_name_list[count]
 
-		if(name == contact_last_name):
-			print(f"{name}  {other_name}  \n{number}\n")
-			afeez_menu()
+		if(last_name.upper() == contact_last_name.upper()):
+			print(f"{name}  {last_name}  \n{number}\n")
 	
-	if(name != contact_last_name):
+	if(last_name.upper() != contact_last_name.upper()):
 		print("Contact Not Found")
+
+	print("\n")
+	navigate = int(input("press '0' to return to Menu: "))
+	if navigate == 0:
 		afeez_menu()
-
-
+	else:
+		find_by_last_name()
+	
 def find_by_first_name():
 
 	contact_first_name = input("Enter Contact First Name\n");
@@ -35,13 +62,19 @@ def find_by_first_name():
 		name = name_list[count]
 		last_name = last_name_list[count]
 
-		if(name == contact_first_name):
+		if(name.upper() == contact_first_name.upper()):
 			print(f"{name}  {last_name}  \n{number}\n")
-			afeez_menu()
-	
-	if(name != contact_first_name):
+				
+	if(name.upper() != contact_first_name.upper()):
 		print("Contact Not Found")
+
+	print("\n")
+	navigate = int(input("press '0' to return to Menu: "))
+	if navigate == 0:
 		afeez_menu()
+	else:
+		find_by_first_name()
+	
 
 def find_by_number():
 
@@ -58,11 +91,17 @@ def find_by_number():
 
 		if(number == number_in_contact):
 			print(f"{name}  {last_name}  \n{number}\n")
-			afeez_menu()
 	
 	if(number != number_in_contact):
 		print("Contact Not Found")
+		
+	print("\n")
+	navigate = int(input("press '0' to return to Menu: "))
+	if navigate == 0:
 		afeez_menu()
+	else:
+		find_by_number()
+
 
 def remove_contact():
 	
@@ -70,26 +109,36 @@ def remove_contact():
 	
 	number = ""
 	name = ""
-	other_name = ""
-	for count in range(0,len(number_list),1):
+	last_name = ""
+	for count in range(len(number_list)):
 		number = number_list[count]
 		name = name_list[count]
-		other_name = last_name_list[count]
+		last_name = last_name_list[count]
 
 		
-		if(number == contact_removal): 
-			number_list.remove(count)
-			name_list.remove(count)
-			print(name_list)
-			print(number_list)
-			print(last_name_list)
+		if(number.upper() == contact_removal.upper()): 
+			number_list.remove(number)
+			name_list.remove(name)
+			last_name_list.remove(last_name)
+
 			print("Contact removed Successfully")
+			print("\n")
+
+			navigate = int(input("press '0' to return to Menu: "))
+			if navigate == 0:
+				afeez_menu()
+			else:
+				remove_contact()
+
+	if(number.upper() != contact_removal.upper()):
+		print("Number not Found");
+		print("\n")
+
+		navigate = int(input("press '0' to return to Menu: "))
+		if navigate == 0:
 			afeez_menu()
-		
-	
-		#if(number != contact_removal):
-		#	print("Number not Found");
-			#afeez_menu()
+		else:
+			remove_contact()
 
 def another_contacts():
 
@@ -100,10 +149,24 @@ def another_contacts():
 
 	if add_contact_again.upper() == ("NO"):
 		print("Contact Added Successfully")
-		afeez_menu()
+
+		print("\n")
+		navigate = int(input("press '0' to return to Menu: "))
+		if navigate == 0:
+			afeez_menu()
+		else:
+			another_contacts()
 	else:
 		print("Invalid response")
-		another_contacts()
+		
+		print("\n")
+		navigate = int(input("press '0' to return to Menu: "))
+		if navigate == 0:
+			afeez_menu()
+		else:
+			add_contacts()
+
+
 		
 
 def add_contacts():   
@@ -140,7 +203,7 @@ def afeez_menu():
 		:::::::::::::::::::::::
 	
 	Welcome Afeez.....
-	Select from option (1 - 6)
+	Select from  Menu option (1 - 6)
 
 	1. Add Contact
 	2. Remove Contact
@@ -148,7 +211,6 @@ def afeez_menu():
 	4. Find Contact by first Name
 	5. Find Contact by Last Name
 	6. Edit Contact
-	0. Back
 	       ''')
 
 	navigate = int(input("Navigate: "))
