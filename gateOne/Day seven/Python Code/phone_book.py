@@ -5,13 +5,14 @@ number_list = []
 def remove_contact():
 	
 	contact_removal = input("Enter Contact Number To Be Removed \n")
-	count = 0
-	for number in number_list:
-		count = count +  1
-		if number == contact_removal:
-			number_list.remove(number)
 	
-			name_list.remove(count)
+	for number in number_list:
+		#print(number)
+		if contact_removal == number:
+			number_list.remove(number)
+			#fish = number_list.index(number)
+			#print(fish) 
+			name_list.remove(number)
 			#last_name_list.remove(number)
 			print(name_list)
 			print(number_list)
@@ -20,9 +21,9 @@ def remove_contact():
 			afeez_menu()
 		
 	
-		if number != contact_removal:
-			print("Number not Found");
-			afeez_menu()
+		#if number != contact_removal:
+		#	print("Number not Found");
+			#afeez_menu()
 
 def another_contacts():
 
