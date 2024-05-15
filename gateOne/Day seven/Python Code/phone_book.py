@@ -2,18 +2,84 @@ name_list = []
 last_name_list = []
 number_list = []
 
+def find_by_last_name():
+
+	contact_last_name = input("Enter Contact Last Name\n");
+	number = ""
+	name = ""
+	last_name = ""
+
+	for count in range(0,len(last_name_list),1):
+		number = number_list[count]
+		name = name_list[count]
+		other_name = last_name_list[count]
+
+		if(name == contact_last_name):
+			print(f"{name}  {other_name}  \n{number}\n")
+			afeez_menu()
+	
+	if(name != contact_last_name):
+		print("Contact Not Found")
+		afeez_menu()
+
+
+def find_by_first_name():
+
+	contact_first_name = input("Enter Contact First Name\n");
+	number = ""
+	name = ""
+	last_name = ""
+
+	for count in range(0,len(name_list),1):
+		number = number_list[count]
+		name = name_list[count]
+		last_name = last_name_list[count]
+
+		if(name == contact_first_name):
+			print(f"{name}  {last_name}  \n{number}\n")
+			afeez_menu()
+	
+	if(name != contact_first_name):
+		print("Contact Not Found")
+		afeez_menu()
+
+def find_by_number():
+
+	number_in_contact = input("Enter Phone Number \n");
+	
+	number = ""
+	name = ""
+	last_name = ""
+
+	for count in range(0,len(number_list),1):
+		number = number_list[count]
+		name = name_list[count]
+		last_name = last_name_list[count]
+
+		if(number == number_in_contact):
+			print(f"{name}  {last_name}  \n{number}\n")
+			afeez_menu()
+	
+	if(number != number_in_contact):
+		print("Contact Not Found")
+		afeez_menu()
+
 def remove_contact():
 	
 	contact_removal = input("Enter Contact Number To Be Removed \n")
 	
-	for number in number_list:
-		#print(number)
-		if contact_removal == number:
-			number_list.remove(number)
-			#fish = number_list.index(number)
-			#print(fish) 
-			name_list.remove(number)
-			#last_name_list.remove(number)
+	number = ""
+	name = ""
+	other_name = ""
+	for count in range(0,len(number_list),1):
+		number = number_list[count]
+		name = name_list[count]
+		other_name = last_name_list[count]
+
+		
+		if(number == contact_removal): 
+			number_list.remove(count)
+			name_list.remove(count)
 			print(name_list)
 			print(number_list)
 			print(last_name_list)
@@ -21,7 +87,7 @@ def remove_contact():
 			afeez_menu()
 		
 	
-		#if number != contact_removal:
+		#if(number != contact_removal):
 		#	print("Number not Found");
 			#afeez_menu()
 
