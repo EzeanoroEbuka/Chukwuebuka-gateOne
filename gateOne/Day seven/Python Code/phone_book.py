@@ -2,14 +2,36 @@ name_list = []
 last_name_list = []
 number_list = []
 
+def remove_contact():
+	
+	contact_removal = input("Enter Contact Number To Be Removed \n")
+	count = 0
+	for number in number_list:
+		count = count +  1
+		if number == contact_removal:
+			number_list.remove(number)
+	
+			name_list.remove(count)
+			#last_name_list.remove(number)
+			print(name_list)
+			print(number_list)
+			print(last_name_list)
+			print("Contact removed Successfully")
+			afeez_menu()
+		
+	
+		if number != contact_removal:
+			print("Number not Found");
+			afeez_menu()
+
 def another_contacts():
 
 	add_contact_again = input("Add Another Contact? (Yes/No)\n");
 	
-	if(add_contact_again.upper() == ("YES")):
+	if add_contact_again.upper() == ("YES"):
 		add_contacts()
 
-	if(add_contact_again.upper() == ("NO")):
+	if add_contact_again.upper() == ("NO"):
 		print("Contact Added Successfully")
 		afeez_menu()
 	else:
@@ -17,7 +39,7 @@ def another_contacts():
 		another_contacts()
 		
 
-def add_contacts():
+def add_contacts():   
 
 	print("""
 	:::::::::::::::::::::
