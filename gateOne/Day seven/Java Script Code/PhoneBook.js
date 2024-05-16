@@ -1,20 +1,12 @@
-import java.util.Scanner;
-import java.util.ArrayList;
-public class PhoneBook {
+let nameList = []; 
+let lastNameList = []; 
+let numberList = [];
+	console.log(afeezMenu())	
 
- private  static Scanner input = new Scanner(System.in);
- private static Scanner scanner = new Scanner(System.in);
- static ArrayList<String> nameList = new ArrayList<>(); 
- static ArrayList<String> lastNameList = new ArrayList<>(); 
- static ArrayList<String> numberList = new ArrayList<>();
-
-public static void main(String... args) {
-
-		afeezMenu();
-}
-public static void afeezMenu() {
+function afeezMenu() {
 		 	
-	System.out.println("""
+	console.log(`
+
 	:::::::::::::::::::::::
 	::  AFEEZ CONTACTS   ::
 	:::::::::::::::::::::::
@@ -28,68 +20,68 @@ public static void afeezMenu() {
 	4. Find Contact by first Name
 	5. Find Contact by Last Name
 	6. Edit Contact
-	0. Back
-			""");
-	int navigate = scanner.nextInt();
+ 
+		`);
+	const prompt = require("prompt-sync")();
+	let navigate = parseInt(prompt(""));
 	switch(navigate) {
-	case 1 -> addContacts();
-	case 2 -> removeContact();
-	case 3 -> findByNumber();
-	case 4 -> findByFirstName();
-	case 5 -> findByLastName();
-	case 6 -> editContact();
-	case 7 -> allContact();
-	case 0 -> afeezMenu();
-	default -> afeezMenu();
+	case 1 : addContacts();
+	case 2 : removeContact();
+	case 3 : findByNumber();
+	case 4 : findByFirstName();
+	case 5 : findByLastName();
+	case 6 : editContact();
+	case 0 : afeezMenu();
+	default : afeezMenu();
 
 	}
 		
 }
 
-public static void addContacts() {
+function addContacts() {
 
-	System.out.println("""
+	console.log(`
+
 	:::::::::::::::::::::
 	::  ADD CONTACTS   ::
 	:::::::::::::::::::::
-			""");
+			`);
 	
-	System.out.println("Enter New Contact First Name");
-	String contactName = input.nextLine();
+	const prompt = require("prompt-sync")();
+	let contactName = prompt("Enter New Contact First Name: ");
 
-	System.out.println("Enter New Contact Last Name");
-	String contactLastName = input.nextLine();
+	let contactLastName = prompt("Enter New Contact Last Name: ");
 	
-	System.out.println("Enter New Contact Telephone");
-	String contactNumber = input.nextLine();
+	let contactNumber = prompt("Enter New Contact Telephone: ");
 
 	
-	numberList.add(contactNumber);
-	nameList.add(contactName);
-	lastNameList.add(contactLastName);
+	numberList = contactNumber;
+	nameList = contactName;
+	lastNameList = contactLastName;
 
-	System.out.println("Contact created successfully");
+	console.log("Contact created successfully");
 	anotherContacts();
-	
-	    
+	 
 }
-public static void anotherContacts() {
-	
 
-	System.out.println("Add Another Contact? (Yes/No)");
-	String addContactAgain = input.nextLine();
-	if(addContactAgain.equalsIgnoreCase("Yes")){
+function anotherContacts() {
+	
+	const prompt = require("prompt-sync")();
+	let addContactAgain = prompt("Add Another Contact? (Yes/No): ");
+	
+	if(addContactAgain.localeCompare("yes")){
+	afeezMenu();}
+
+	if(addContactAgain.localeCompare("no")){
+		console.log("Contact Added Successfully");
 		addContacts();}
-
-	if(addContactAgain.equalsIgnoreCase("No")){
-		System.out.println("""
-			Contact Added Successfully
-			""");
-		afeezMenu();}
 	else {
-		System.out.println("Invalid response");
-		anotherContacts();} 
+		console.log("Invalid response");
+		anotherContacts();
+		
+	    } 
 }
+/**
 public static void removeContact() {
 	
 	Scanner input = new Scanner(System.in);
@@ -108,9 +100,9 @@ public static void removeContact() {
 			afeezMenu();
 		}
 	}
-	if(!(delete.equals(removeContact))){
-		System.out.println("Number not Found");
-		afeezMenu();}
+		if(!(delete.equals(removeContact))){
+			System.out.println("Number not Found");
+			afeezMenu();}
 }
 public static void findByNumber() {
 
@@ -185,33 +177,6 @@ public static void findByLastName() {
 }
 public static void editContact() {
 
-	System.out.println("Serch for contact to be Edited");
-	
-	System.out.println("Enter Contact Number To Be Edited"); 
-	String edifyContact = input.nextLine();
-	
-
-	String editer = "";
-
-	for(int count = 0;count < numberList.size();count++) {
-		editer = numberList.get(count);
-
-		if(editer.equals(edifyContact)){
-			System.out.println("Contact  Found");
-			System.out.println("Enter New Contact Number"); 
-			String newContact = input.nextLine();
-			editer.set(newContact);
-			afeezMenu();
-		}
-	}
-	if(!(editer.equals(edifyContact))){
-		System.out.println("Number not Found");
-		afeezMenu();}
-	
-}
-
-public static void allContact() {
-
 	System.out.println("""
 			******************
 			** ALL CONTACTS **
@@ -231,6 +196,7 @@ public static void allContact() {
 }
 
 
+**/
 
-}
+
 
