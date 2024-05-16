@@ -28,6 +28,7 @@ public static void afeezMenu() {
 	4. Find Contact by first Name
 	5. Find Contact by Last Name
 	6. Edit Contact
+	7. View  All Contacts
 	0. Back
 			""");
 	int navigate = scanner.nextInt();
@@ -187,27 +188,56 @@ public static void editContact() {
 
 	System.out.println("Serch for contact to be Edited");
 	
-	System.out.println("Enter Contact Number To Be Edited"); 
+	System.out.println("Enter Contact Detail To Be Edited"); 
 	String edifyContact = input.nextLine();
 	
 
-	String editer = "";
+	String numberEditer = "";
+	String name1Editer = "";
+	String name2Editer = "";
 
 	for(int count = 0;count < numberList.size();count++) {
-		editer = numberList.get(count);
+		numberEditer = numberList.get(count);
+		name1Editer = nameList.get(count);
+		name2Editer = lastNameList.get(count);
 
-		if(editer.equals(edifyContact)){
+		if(numberEditer.equalsIgnoreCase(edifyContact)){
 			System.out.println("Contact  Found");
 			System.out.println("Enter New Contact Number"); 
 			String newContact = input.nextLine();
-			editer.set(newContact);
-			afeezMenu();
-		}
+			numberList.set(count,newContact);
+			System.out.println("Contact Edited Successfully");
+			afeezMenu();}
+
+		if(name1Editer.equalsIgnoreCase(edifyContact)){
+			System.out.println("Contact  Found");
+			System.out.println("Enter New Contact Name"); 
+			String newContact = input.nextLine();
+			nameList.set(count,newContact);
+			System.out.println("Contact Edited Successfully");
+			afeezMenu();}
+
+		if(name2Editer.equalsIgnoreCase(edifyContact)){
+			System.out.println("Contact Last Name Found");
+			System.out.println("Enter New Contact Last Name"); 
+			String newContact = input.nextLine();
+			lastNameList.set(count,newContact);
+			System.out.println("Contact Edited Successfully");
+			afeezMenu();}
+
 	}
-	if(!(editer.equals(edifyContact))){
+	if(!(numberEditer.equalsIgnoreCase(edifyContact))){
 		System.out.println("Number not Found");
 		afeezMenu();}
-	
+
+	if(!(name1Editer.equalsIgnoreCase(edifyContact))){
+		System.out.println("Name not Found");
+		afeezMenu();}
+
+	if(!(name2Editer.equalsIgnoreCase(edifyContact))){
+		System.out.println("Name not Found");
+		afeezMenu();}
+
 }
 
 public static void allContact() {
