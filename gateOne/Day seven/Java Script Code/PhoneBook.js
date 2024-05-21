@@ -1,9 +1,9 @@
 let nameList = []; 
 let lastNameList = []; 
 let numberList = [];
-	console.log(afeezMenu())	
-
-function afeezMenu() {
+	console.log(printAfeezMenu())
+	
+function printAfeezMenu() {
 		 	
 	console.log(`
 
@@ -20,6 +20,7 @@ function afeezMenu() {
 	4. Find Contact by first Name
 	5. Find Contact by Last Name
 	6. Edit Contact
+	7. View All
  
 		`);
 	const prompt = require("prompt-sync")();
@@ -27,12 +28,13 @@ function afeezMenu() {
 	switch(navigate) {
 	case 1 : addContacts();
 	case 2 : removeContact();
-	case 3 : findByNumber();
-	case 4 : findByFirstName();
-	case 5 : findByLastName();
+	case 3 : findContactByNumber();
+	case 4 : findContactByFirstName();
+	case 5 : findContactByLastName();
 	case 6 : editContact();
-	case 0 : afeezMenu();
-	default : afeezMenu();
+	case 7 : PrintOutContacts();
+	case 0 : printAfeezMenu();
+	default : printAfeezMenu();
 
 	}
 		
@@ -55,148 +57,198 @@ function addContacts() {
 	let contactNumber = prompt("Enter New Contact Telephone: ");
 
 	
-	numberList = contactNumber;
-	nameList = contactName;
-	lastNameList = contactLastName;
+	numberList.push(contactNumber);
+	nameList.push(contactName);
+	lastNameList.push(contactLastName);
 
 	console.log("Contact created successfully");
-	anotherContacts();
+	addAnotherContacts();
 	 
 }
 
-function anotherContacts() {
+function addAnotherContacts() {
 	
 	const prompt = require("prompt-sync")();
 	let addContactAgain = prompt("Add Another Contact? (Yes/No): ");
 	
-	if(addContactAgain.localeCompare("yes")){
-	afeezMenu();}
-
-	if(addContactAgain.localeCompare("no")){
-		console.log("Contact Added Successfully");
+	if(addContactAgain.toUpperCase() === ("YES")){
 		addContacts();}
+
+	if(addContactAgain.toUpperCase() === ("NO")){
+		console.log("Contact Added Successfully");
+		printAfeezMenu();}
 	else {
 		console.log("Invalid response");
-		anotherContacts();
+		addAnotherContacts();
 		
 	    } 
 }
-/**
-public static void removeContact() {
+
+function removeContact() {
 	
-	Scanner input = new Scanner(System.in);
-	System.out.println("Enter Contact Number To Be Removed"); 
-	String removeContact = input.nextLine();
-	String delete = "";
-
-	for(int count = 0;count < numberList.size();count++) {
-		delete = numberList.get(count);
-
-		if(delete.equals(removeContact)){
-			numberList.remove(count);
-			nameList.remove(count);
-			lastNameList.remove(count);
-			System.out.println("Contact removed Successfully");
-			afeezMenu();
-		}
-	}
-		if(!(delete.equals(removeContact))){
-			System.out.println("Number not Found");
-			afeezMenu();}
-}
-public static void findByNumber() {
-
-	System.out.println("Enter Phone Number");
-	String numberIncontact = input.nextLine();
-
-	String number = "";
-	String name = "";
-	String otherName = "";
-
-	for(int count = 0;count < numberList.size();count++) {
-		number = numberList.get(count);
-		name = nameList.get(count);
-		otherName = lastNameList.get(count);
-
-		if(number.equals(numberIncontact)){
-			System.out.printf("%s  %s  %n%s%n",name,otherName,number);
-			afeezMenu();
-		}
-	}
-	if(!(number.equals(numberIncontact))){
-		System.out.println("Contact Not Found");afeezMenu();}
+	const prompt = require("prompt-sync")();
+	let contactNumberToBeRemoved = prompt("Enter Contact Number To Be Removed: ");
 	
-	System.out.println();
-}
-public static void findByFirstName() {
-
-	System.out.println("Enter First Name Of Contact");
-	String firstNameIncontact = input.nextLine();
-
-	String number = "";
-	String name = "";
-	String otherName = "";
-
-	for(int count = 0;count < nameList.size();count++) {
-		number = numberList.get(count);
-		name = nameList.get(count);
-		otherName = lastNameList.get(count);
-
-		if(name.equalsIgnoreCase(firstNameIncontact)){
-			System.out.printf("%s  %s  %n%s%n",name,otherName,number);afeezMenu();
-		}
-	}
-	if(!(name.equals(firstNameIncontact))){
-		System.out.println("Contact Not Found");afeezMenu();}
-
-	System.out.println();
-}
-public static void findByLastName() {
-
-	System.out.println("Enter Last Name Of Contact");
-	String lastNameIncontact = input.nextLine();
-
-	String number = "";
-	String name = "";
-	String otherName = "";
-
-	for(int count = 0;count < lastNameList.size();count++) {
-		number = numberList.get(count);
-		name = nameList.get(count);
-		otherName = lastNameList.get(count);
-
-		if(otherName.equalsIgnoreCase(lastNameIncontact)){
-			System.out.printf("%s  %s  %n%s%n",name,otherName,number);
-			afeezMenu();
-		}
-	}
-	if(!(otherName.equals(lastNameIncontact))){
-		System.out.println("Contact Not Found");afeezMenu();}
 	
-	System.out.println();
-}
-public static void editContact() {
+	let tempotalNumberHolder = "";
 
-	System.out.println("""
+	for(let count = 0;count < numberList.length;count++) {
+		tempotalNumberHolder = numberList[count];
+		
+		if(tempotalNumberHolder === (contactNumberToBeRemoved)){
+			numberList.splice(count,1);
+			nameList.splice(count,1);
+			lastNameList.splice(count,1);
+			console.log("Contact removed Successfully");
+			printAfeezMenu();
+		}
+	}
+	if(!(tempotalNumberHolder=== (contactNumberToBeRemoved))){
+			console.log("Number not Found");
+			printAfeezMenu();}
+}
+
+function findContactByNumber() {
+
+	const prompt = require("prompt-sync")();
+	let numberIncontact = prompt("Enter Contact Number You Wish To Find ");
+	
+	let temporalNumberHolder = "";
+	let temporalNameHolder = "";
+	let temporalLastNameHolder = "";
+
+	for(let count = 0;count < numberList.length;count++) {
+		temporalNumberHolder = numberList[count];
+		temporalNameHolder = nameList[count];
+		temporalLastNameHolder = lastNameList[count];
+
+		if(temporalNumberHolder.toUpperCase() === numberIncontact.toUpperCase()){
+			console.log(`${temporalNameHolder}  ${temporalLastNameHolder}\n${temporalNumberHolder}\n`);
+			printAfeezMenu();
+		}
+	}
+	if(!(temporalNumberHolder.toUpperCase() === numberIncontact.toUpperCase())){
+		console.log("Contact Not Found");printAfeezMenu();}
+	console.log();
+}
+function findContactByFirstName() {
+
+	const prompt = require("prompt-sync")();
+	let firstNameIncontact = prompt("Enter Contact First Name You Wish To Find ");
+	
+	let temporalNumberHolder = "";
+	let temporalNameHolder = "";
+	let temporalLastNameHolder = "";
+
+	for(let count = 0;count < numberList.length;count++) {
+		temporalNumberHolder = numberList[count];
+		temporalNameHolder = nameList[count];
+		temporalLastNameHolder = lastNameList[count];
+
+		if(temporalNameHolder.toUpperCase() === firstNameIncontact.toUpperCase()){
+			console.log(`${temporalNameHolder}  ${temporalLastNameHolder}\n${temporalNumberHolder}\n`);
+			printAfeezMenu();
+		}
+	}
+	if(!(temporalNameHolder.toUpperCase() === firstNameIncontact.toUpperCase())){
+		console.log("Contact First Name Not Found");printAfeezMenu();}
+	console.log();
+}
+function findContactByLastName() {
+
+	
+	const prompt = require("prompt-sync")();
+	let lastNameIncontact = prompt("Enter Contact Last Name You Wish To Find ");
+	
+	let temporalNumberHolder = "";
+	let temporalNameHolder = "";
+	let temporalLastNameHolder = "";
+
+	for(let count = 0;count < numberList.length;count++) {
+		temporalNumberHolder = numberList[count];
+		temporalNameHolder = nameList[count];
+		temporalLastNameHolder = lastNameList[count];
+
+		if(temporalLastNameHolder.toUpperCase() === lastNameIncontact.toUpperCase()){
+			console.log(`${temporalNameHolder}  ${temporalLastNameHolder}\n${temporalNumberHolder}\n`);
+			printAfeezMenu();
+		}
+	}
+	if(!(temporalLastNameHolder.toUpperCase() === lastNameIncontact.toUpperCase())){
+		console.log("Contact Last Name Not Found");printAfeezMenu();}
+	console.log();
+}
+
+function editContact() {
+
+	const prompt = require("prompt-sync")();
+	let contactToBeEdited = prompt("Enter Contact Detail To Be Edit: ");
+	
+	
+	let temporalNumberHolder = "";
+	let temporalNameHolder = "";
+	let temporalLastNameHolder = "";
+	
+	for(let count = 0;count < numberList.length;count++) {
+		tempotalNumberHolder = numberList[count];
+		temporalNameHolder = nameList[count];
+		temporalLastNameHolder = lastNameList[count];
+		
+		if(temporalNumberHolder === contactToBeEdited) {
+			console.log(tempotalNumberHolder + "\ncontact Found");
+			let newContactDetail = prompt("Enter Contact New Number To Be Edit: ");
+			numberList.splice(count,1,newContactDetail);
+			console.log("Contact Number Editd Successfully");
+			printAfeezMenu();
+		}
+		if(temporalNameHolder.toUpperCase() === contactToBeEdited.toUpperCase()) {
+			console.log(temporalNameHolder + "\ncontact Found");
+			let newContactDetail = prompt("Enter Contact New First Name To Be Edit: ");
+			nameList.splice(count,1,newContactDetail);
+			console.log("Contact First Name Edited Successfully");
+			printAfeezMenu();
+		}
+		if(temporalLastNameHolder.toUpperCase() === contactToBeEdited.toUpperCase()) {
+			console.log(temporalLastNameHolder + "\ncontact Found");
+			let newContactDetail = prompt("Enter Contact New First Name To Be Edit: ");
+			lastNameList.splice(count,1,newContactDetail);
+			console.log("Contact Last Name Edited Successfully");
+			printAfeezMenu();
+		}
+	}
+	
+	if(!(tempotalNumberHolder.toUpperCase() === contactToBeEdited.toUpperCase())) {
+		console.log("Contact Detail not Found");printAfeezMenu();}
+			
+	if(!(temporalNameHolder.toUpperCase() === ccontactToBeEdited.toUpperCase())) {
+		console.log("Contact Detail Not Found");printAfeezMenu();}
+	
+	if(!(temporealLastNameHolder.toUpperCase() === contactToBeEdited.toUpperCase())) {
+		console.log("Contact Detail Not Found");printAfeezMenu();}
+}
+
+function PrintOutContacts() {
+
+	console.log(`
 			******************
 			** ALL CONTACTS **
 			******************
 	================================================================================
-	""");
+	`);
 	
-	System.out.println("NAMES\t\t\t\t\tNUMBERS");
-	System.out.println("================================================================================");
-	for(int count = 0;count < numberList.size();count++) {
+	console.log("NAMES\t\t\t\t\tNUMBERS");
+	console.log("================================================================================");
+	for(let count = 0;count < numberList.length;count++) {
 				
-		System.out.printf("%s\t%s\t\t\t|\t%s%n",nameList.get(count),lastNameList.get(count),numberList.get(count));
+		console.log(`${nameList[count]}\t${lastNameList[count]}\t\t\t|\t${numberList[count]}\n`);
 	}
-	System.out.println("================================================================================");
-	System.out.println();
-	afeezMenu();
+	console.log("================================================================================");
+	console.log();
+	printAfeezMenu();
 }
 
 
-**/
+
 
 
 

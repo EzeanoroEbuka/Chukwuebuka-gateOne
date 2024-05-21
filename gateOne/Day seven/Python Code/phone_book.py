@@ -2,32 +2,79 @@ name_list = []
 last_name_list = []
 number_list = []
 
-def edit_contact():
+def printout_contact():
 
 	print("""
 			******************
 			** ALL CONTACTS **
 			******************
-================================================================================
+===================================================================================================================================================
 	""")
 	
 	print("NAMES\t\t\t\t\tNUMBERS")
-	print("================================================================================")
+	print("====================================================================================================================================")
 	for count in range(0,len(number_list),1):		
-		print(f"{name_list[count]}\t{last_name_list[count]}  |\t\t\t\t{number_list[count]}\n")
+		print(f"   {name_list[count]}  \t\t\t   {last_name_list[count]}    \t\t\t\t\t\t|\t  {number_list[count]}  \n")
 	
-	print("================================================================================")
+	print("====================================================================================================================================")
 	print("\n")
 
 	navigate = int(input("press '0' to return to Menu: "))
 	if navigate == 0:
-		afeez_menu()
+		printAfeezMenu()()
 	else:
-		edit_contact()
+		printout_contact()
+def edit_contact():
+
+	contact_to_be_edited = input("Enter Contact Detail To Be Edit: ")
+	tempotal_number_holder = "" 
+	temporal_name_holder = "" 
+	temporal_lastname_holder = "" 
 	
+	for count in range(0,len(number_list),1):   
+		tempotal_number_holder = number_list[count] 
+		temporal_name_holder = name_list[count] 
+		temporal_last_name_holder = last_name_list[count] 
+		
+		if(tempotal_number_holder == contact_to_be_edited):  
+			print(tempotal_number_holder + "\ncontact Found") 
+			new_contact_detail = input("Enter Contact New Number To Be Edit: ")
+			index_holder = number_list.index(tempotal_number_holder)
+			number_list[index_holder] = new_contact_detail 
+			print("Contact Number Editd Successfully") 
+			printAfeezMenu() 
+		  
+		if(temporal_name_holder.upper() == contact_to_be_edited.upper()):    
+			print(temporal_name_holder + "\ncontact Found") 
+			new_contact_detail = input("Enter Contact New First Name To Be Edit: ") 
+			index_holder = name_list.index(tempotal_name_holder)
+			name_list[index_holder] = new_contact_detail 
+			print("Contact First Name Edited Successfully") 
+			printAfeezMenu() 
+		  
+		if(temporal_last_name_holder.upper()    == contact_to_be_edited.upper()):    
+			print(temporal_last_name_holder + "\ncontact Found") 
+			new_contact_detail = input("Enter Contact New First Name To Be Edit: ") 
+			index_holder = last_name_list.index(temporal_last_name_holder)
+			last_name_list[index_holder] = new_contact_detail 
+			print("Contact Last Name Edited Successfully") 
+			printAfeezMenu() 
+		  
+	if(temporal_number_holder.upper() != contact_to_be_edited.upper()):   
+		print("Contact Detail not Found") 
+		printAfeezMenu()   
+			
+	if(temporal_name_holder.upper() != ccontact_to_be_edited.upper()):    
+		print("Contact Detail Not Found") 
+		printAfeezMenu()   
+	
+	if(temporal_last_name_holder.upper() != contact_to_be_edited.upper()):    
+		print("Contact Detail Not Found") 
+		printAfeezMenu()   
+  
 def find_by_last_name():
 
-	contact_last_name = input("Enter Contact Last Name\n");
+	contact_last_name = input("Enter Contact Last Name\n") 
 	number = ""
 	name = ""
 	last_name = ""
@@ -38,7 +85,7 @@ def find_by_last_name():
 		last_name = last_name_list[count]
 
 		if(last_name.upper() == contact_last_name.upper()):
-			print(f"{name}  {last_name}  \n{number}\n")
+			print(f"   name       last_name    \n   number  \n")
 	
 	if(last_name.upper() != contact_last_name.upper()):
 		print("Contact Not Found")
@@ -46,13 +93,13 @@ def find_by_last_name():
 	print("\n")
 	navigate = int(input("press '0' to return to Menu: "))
 	if navigate == 0:
-		afeez_menu()
+		printAfeezMenu()()
 	else:
 		find_by_last_name()
 	
 def find_by_first_name():
 
-	contact_first_name = input("Enter Contact First Name\n");
+	contact_first_name = input("Enter Contact First Name\n") 
 	number = ""
 	name = ""
 	last_name = ""
@@ -63,7 +110,7 @@ def find_by_first_name():
 		last_name = last_name_list[count]
 
 		if(name.upper() == contact_first_name.upper()):
-			print(f"{name}  {last_name}  \n{number}\n")
+			print(f"   name       last_name    \n   number  \n")
 				
 	if(name.upper() != contact_first_name.upper()):
 		print("Contact Not Found")
@@ -71,14 +118,14 @@ def find_by_first_name():
 	print("\n")
 	navigate = int(input("press '0' to return to Menu: "))
 	if navigate == 0:
-		afeez_menu()
+		printAfeezMenu()()
 	else:
 		find_by_first_name()
 	
 
 def find_by_number():
 
-	number_in_contact = input("Enter Phone Number \n");
+	number_in_contact = input("Enter Phone Number \n") 
 	
 	number = ""
 	name = ""
@@ -90,7 +137,7 @@ def find_by_number():
 		last_name = last_name_list[count]
 
 		if(number == number_in_contact):
-			print(f"{name}  {last_name}  \n{number}\n")
+			print(f"   name       last_name    \n   number  \n")
 	
 	if(number != number_in_contact):
 		print("Contact Not Found")
@@ -98,7 +145,7 @@ def find_by_number():
 	print("\n")
 	navigate = int(input("press '0' to return to Menu: "))
 	if navigate == 0:
-		afeez_menu()
+		printAfeezMenu()()
 	else:
 		find_by_number()
 
@@ -126,23 +173,23 @@ def remove_contact():
 
 			navigate = int(input("press '0' to return to Menu: "))
 			if navigate == 0:
-				afeez_menu()
+				printAfeezMenu()()
 			else:
 				remove_contact()
 
 	if(number.upper() != contact_removal.upper()):
-		print("Number not Found");
+		print("Number not Found") 
 		print("\n")
 
 		navigate = int(input("press '0' to return to Menu: "))
 		if navigate == 0:
-			afeez_menu()
+			printAfeezMenu()()
 		else:
 			remove_contact()
 
 def another_contacts():
 
-	add_contact_again = input("Add Another Contact? (Yes/No)\n");
+	add_contact_again = input("Add Another Contact? (Yes/No)\n") 
 	
 	if add_contact_again.upper() == ("YES"):
 		add_contacts()
@@ -153,7 +200,7 @@ def another_contacts():
 		print("\n")
 		navigate = int(input("press '0' to return to Menu: "))
 		if navigate == 0:
-			afeez_menu()
+			printAfeezMenu()()
 		else:
 			another_contacts()
 	else:
@@ -162,7 +209,7 @@ def another_contacts():
 		print("\n")
 		navigate = int(input("press '0' to return to Menu: "))
 		if navigate == 0:
-			afeez_menu()
+			printAfeezMenu()()
 		else:
 			add_contacts()
 
@@ -175,7 +222,7 @@ def add_contacts():
 	:::::::::::::::::::::
 	::  ADD CONTACTS   ::
 	:::::::::::::::::::::
-	       """);
+	       """) 
 	
 	contact_name = input("Enter New Contact First Name \n")
 		
@@ -191,11 +238,11 @@ def add_contacts():
 	last_name_list.append(contact_last_name)
 
 	print("Contact created successfully")
-	another_contacts();
+	another_contacts() 
 	
 
 
-def afeez_menu():
+def printAfeezMenu():
 		 	
 	print('''
 		:::::::::::::::::::::::
@@ -211,6 +258,7 @@ def afeez_menu():
 	4. Find Contact by first Name
 	5. Find Contact by Last Name
 	6. Edit Contact
+	7. View All Contacts
 	       ''')
 
 	navigate = int(input("Navigate: "))
@@ -221,8 +269,9 @@ def afeez_menu():
 		case 4 : find_by_first_name()
 		case 5 : find_by_last_name()
 		case 6 : edit_contact()
-		case 0 : afeez_menu()
-		case _ :  afeez_menu()
+		case 7 : printout_contact()
+		case 0 : printAfeezMenu()
+		case _ : printAfeezMenu()
 
-afeez_menu()
+printAfeezMenu()()
 
