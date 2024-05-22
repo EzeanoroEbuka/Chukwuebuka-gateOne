@@ -236,11 +236,11 @@ function PrintOutContacts() {
 	================================================================================
 	`);
 	
-	console.log("NAMES\t\t\t\t\tNUMBERS");
+	console.log("NAMES\t\t\t\t\t\t\tNUMBERS");
 	console.log("================================================================================");
 	for(let count = 0;count < numberList.length;count++) {
 				
-		console.log(`${nameList[count]}\t${lastNameList[count]}\t\t\t|\t${numberList[count]}\n`);
+		console.log(`${nameList[count]}\t${lastNameList[count]}\t\t\t\t|\t\t\t${numberList[count]}\n`);
 	}
 	console.log("================================================================================");
 	console.log();
