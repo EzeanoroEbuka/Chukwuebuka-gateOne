@@ -51,7 +51,7 @@ import java.util.Scanner;
 		total += add;
 		
 	}
-		System.out.print(total);
+		
 	for(int count = numberLength - 1;count > 0;count = count - 2) {
 		int convertedValue = (accNumber.charAt(count)) - '0';
 		
@@ -65,6 +65,7 @@ import java.util.Scanner;
 	else
 		cardValidity =("Invalid");
 	
+	System.out.println("\n");
 	System.out.println("****************************************");
 
 	System.out.println("**Credit Card Type: " + cardStatus);
@@ -77,8 +78,6 @@ import java.util.Scanner;
 
 	System.out.println("****************************************");
 
-
    }
-
-
+   
 }

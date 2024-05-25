@@ -1,61 +1,59 @@
 
 from datetime import date
-#import java.time.Period;
+#import java.time.Period
 
-	date = date.today();
+date = date.today()
 
 	
-	print("""
-		:::::::::::::::::::::
-		:: SAFE PERIOD APP ::
-		:::::::::::::::::::::
-		What Do You wish To Check For?
+print("""
+	:::::::::::::::::::::
+	:: SAFE PERIOD APP ::
+	:::::::::::::::::::::
+	What this app Checks For....
+	
+	1. Period Length
+	2. Next Period
+	3. Safe Periods
+	4. Ovulation Date
+	
+	""")
+
+date_of_period_began = input("Pls Kindly Enter the date of the beginning of your last period (DD/MM/YYYY)\n")
+	
+	
+date_of_period_end = input("Pls Kindly Enter the date of the end of the last period (DD/MM/YYYY)\n")
+	
+length_of_menstral_cycle = int(input("How long does your menstration last \n"))
+	
+
+date_format = today.strftime("%B %d, %Y")
+	
+
+"""
+#LocalDate date_start = LocalDate.parse(periodBegan,dateFormat)
+
+#LocalDate date_end = LocalDate.parse(periodEnd ,dateFormat)
+
 		
-		1. Period Length
-		2. Next Period
-		3. Safe Periods
-		4. Ovulation Date
-		
-			""")
-				
-	date_of_period_began = input("Enter date of the beginning of your last period (DD/MM/YYYY)")
-	
-	
-	date_of_period_end = input("Enter date of the end of the last period (DD/MM/YYYY)")
-	
-	length_of_menstral_cycle = int(input("How long does your menstration last"))
+#Period periodLength = Period.between(dateStart,dateEnd)
 	
 
-	date_format = today.strftime("%B %d, %Y")
+LocalDate ovulation = dateEnd.plusDays(mensCycle / 2)
 	
-	LocalDate dateStart = LocalDate.parse(periodBegan,dateFormat);
-
-	LocalDate dateEnd = LocalDate.parse(periodEnd ,dateFormat);
-
-		
-	Period periodLength = Period.between(dateStart,dateEnd);
+LocalDate safePeriodBegins = dateEnd.plusDays(1)
 	
+LocalDate safePeriodEnds = dateEnd.plusDays(6)
 
-	LocalDate ovulation = dateEnd.plusDays(mensCycle / 2);
+LocalDate nextPeriod = dateEnd.plusDays(mensCycle)
+
+print("Your Period Length is: " + periodLength.getDays() + "Days")
+
+print("Your Ovulation is  Either A Day Before " + ovulation.format(dateFormat) + " or A Day After it")
+
+print("Your Safe Period Starts on " + safePeriodBegins.format(dateFormat))
 	
-	LocalDate safePeriodBegins = dateEnd.plusDays(1);
-	
-	LocalDate safePeriodEnds = dateEnd.plusDays(6);
+print("Your Safe Period Ends on " + safePeriodEnds.format(dateFormat))
 
-	LocalDate nextPeriod = dateEnd.plusDays(mensCycle);
+print("Your Next Period Starts on " + nextPeriod.format(dateFormat))
+"""
 
-	System.out.println("Your Period Length is: " + periodLength.getDays() + "Days");
-
-	System.out.println("Your Ovulation is  Either A Day Before " + ovulation.format(dateFormat) + " or A Day After it");
-
-	System.out.println("Your Safe Period Starts on " + safePeriodBegins.format(dateFormat));
-	
-	System.out.println("Your Safe Period Ends on " + safePeriodEnds.format(dateFormat));
-
-	System.out.println("Your Next Period Starts on " + nextPeriod.format(dateFormat));
-
-
-
-}
-
-}
