@@ -3,14 +3,13 @@ let perPiecesList = [];
 let priceList = [];
 let totalList = [];
 
-let addItem = null;
  const date = new Date().toDateString();
 
 const prompt = require("prompt-sync")();
 let customerName = prompt("What is the Customer's Name: ");
 	
 let total = 0;
-let repeatOrder = "";
+let addMoreItem = "";
 	 
 do{
 	let itemName = prompt("What did the user buy?: ");
@@ -32,14 +31,13 @@ do{
 	totalList.push(total);
 
 		
-	let addMoreItem = prompt("Add more items?: ");
-	repeatOrder = addMoreItem;
+	addMoreItem = prompt("Add more items?: ");
 	
-	if(repeatOrder.toUpperCase()  === "NO"){
+	if(addMoreItem.toUpperCase()  === "NO"){
 		break;}
 	    
 }
-while(repeatOrder.toUpperCase()  === "YES");
+while(addMoreItem.toUpperCase()  === "YES");
 	    
 if(total < 1)
 	console.log("Invalid Quantity");
@@ -177,7 +175,7 @@ let balance = (cashReceived - bill2);
 
 	   console.log(`\t\tBill Total: \t${bill2}\n`);
 
-	   console.log(`\t\tDiscount: \t${cashReceived}\n`);
+	   console.log(`\t\tAmount Paid: \t${cashReceived}\n`);
 
 	   console.log(`\t\tBalance: \t${balance}\n`);
 
